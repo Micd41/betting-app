@@ -1,3 +1,12 @@
+def calculate_implied_prob(odds, odds_type="Decimal"):
+    if odds_type == "Decimal":
+        return (1 / odds)
+    elif odds_type == "American":
+        if odds > 0:
+            return 100 / (odds + 100)
+        else:
+            return abs(odds) / (abs(odds) + 100)
+    return 0
 from datetime import datetime
 import pytz
 import streamlit as st
