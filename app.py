@@ -58,7 +58,20 @@ st.divider()
 
 # 5. Search and Filter Logic
 # Move the search and filters to the mobile-friendly sidebar
-with st.sidebar:
+with st.sidebar:with st.sidebar:
+    st.divider()
+    st.subheader("🧮 Quick Win Calc")
+    
+    # Input for manual odds
+    user_odds = st.number_input("Enter Odds", min_value=1.01, value=2.00, step=0.01)
+    odds_format = st.radio("Format", ["Decimal", "American"], horizontal=True)
+    
+    # Calculate and display
+    implied_val = calculate_implied_prob(user_odds, odds_format)
+    st.metric("Implied Win %", f"{implied_val:.2%}")
+    
+    st.info("If your projection is HIGHER than this %, you have an edge!")
+
     st.header("⚙️ Controls")
     search = st.text_input("🔍 Search Player", placeholder="Type a name...")
     st.write("Use this to filter the board for your PrizePicks slips.")
