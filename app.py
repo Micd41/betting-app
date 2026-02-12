@@ -48,7 +48,12 @@ if not df.empty:
 st.divider()
 
 # 5. Search and Filter Logic
-search = st.text_input("🔍 Search Player", placeholder="Type a name...")
+# Move the search and filters to the mobile-friendly sidebar
+with st.sidebar:
+    st.header("⚙️ Controls")
+    search = st.text_input("🔍 Search Player", placeholder="Type a name...")
+    st.write("Use this to filter the board for your PrizePicks slips.")
+
 if search:
     df = df[df['Player'].str.contains(search, case=False)]
 
