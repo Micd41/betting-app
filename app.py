@@ -7,6 +7,9 @@ import numpy as np
 # 1. Setup Page Config
 st.set_page_config(page_title="Pro Betting Dashboard", layout="wide")
 st.title("🎯 Betting Edge Finder")
+# Set to your local Texas time (US/Central)
+now = datetime.now(pytz.timezone('US/Central'))
+st.caption(f"🕒 Last updated: {now.strftime('%B %d, %Y at %I:%M %p')}")
 
 # 2. Mock Calculation Logic (The "Existing Functions")
 def calculate_fair_win_probability(odds):
